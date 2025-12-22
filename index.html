@@ -4,84 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mesh ’N It Up</title>
-  <style>
-    :root {
-      /* Brand palette inspired by the business card */
-      --coral: #EE7F73;      /* warm coral */
-      --butter: #F6E1A6;     /* soft yellow */
-      --mint: #BFE3D2;       /* light mint */
-      --sky: #A9D6E5;        /* soft blue */
-      --ink: #111111;        /* near-black text */
-      --paper: #FFFFFF;     /* white background */
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: "Poppins", "Quicksand", system-ui, -apple-system, sans-serif;
-      background: var(--paper);
-      color: var(--ink);
-    }
-
-    /* Header / Nav */
-    header {
-      border-bottom: 6px solid var(--mint);
-    }
-
-    .nav {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1rem 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .brand {
-      font-size: 1.75rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-    }
-
-    .brand span {
-      color: var(--coral);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      padding: 0;
-      margin: 0;
-    }
-
-    nav a {
-      text-decoration: none;
-      color: var(--ink);
-      font-weight: 500;
-      padding-bottom: 4px;
-      border-bottom: 2px solid transparent;
-      transition: border-color 0.2s ease, color 0.2s ease;
-    }
-
-    nav a:hover {
-      color: var(--coral);
-      border-bottom-color: var(--coral);
-    }
-
-    /* Decorative accent bar (optional) */
-    .accent-bar {
-      height: 8px;
-      background: linear-gradient(
-        90deg,
-        var(--coral),
-        var(--butter),
-        var(--mint),
-        var(--sky)
-      );
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -90,13 +13,21 @@
       <div class="brand">Mesh <span>’N</span> It Up</div>
       <nav>
         <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
+
+  <main>
+    <h1>Decorate. Illuminate. Celebrate.</h1>
+    <p>
+      Mesh ’N It Up creates festive, eye-catching decor for parties, events,
+      and special moments worth celebrating.
+    </p>
+  </main>
 </body>
 </html>
