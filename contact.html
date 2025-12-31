@@ -7,20 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <div class="accent-bar"></div>
-    <div class="nav">
-      <div class="brand">Mesh <span>’N</span> It Up</div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="gallery.html">Gallery</a></li>
-          <li><a href="contact.html" class="active">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <div id="site-header"></div>
 
   <main>
     <h1>Contact</h1>
@@ -45,5 +32,18 @@
       <button type="submit">Send Message</button>
     </form>
   </main>
+  
+   <script>
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-header").innerHTML = html;
+
+        // set active nav link
+        const page = location.pathname.split("/").pop().replace(".html", "") || "index";
+        const activeLink = document.querySelector(`nav a[data-page="${page}"]`);
+        if (activeLink) activeLink.classList.add("active");
+      });
+  </script>
 </body>
 </html>
