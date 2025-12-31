@@ -60,15 +60,27 @@
 
 <!-- Modal -->
 <div class="modal-overlay" id="itemModal">
-  <div class="modal">
-    <button class="modal-close" aria-label="Close">&times;</button>
-    <img id="modalImage" alt="">
-    <h2 id="modalName"></h2>
-    <p id="modalDescription"></p>
-    <p class="modal-price" id="modalPrice"></p>
-    <a href="contact.html" class="modal-cta">Message if Interested</a>
+  <div class="modal modal-wide">
+    <button class="modal-close" aria-label="Close">×</button>
+
+    <div class="modal-content">
+      <div class="modal-image">
+        <img id="modalImage" alt="">
+      </div>
+
+      <div class="modal-info">
+        <h2 id="modalName"></h2>
+        <p id="modalDescription"></p>
+        <p class="modal-price" id="modalPrice"></p>
+
+        <a id="modalCta" href="contact.html" class="modal-cta">
+          Message if Interested
+        </a>
+      </div>
+    </div>
   </div>
 </div>
+
 
 <script>
   const modal = document.getElementById("itemModal");

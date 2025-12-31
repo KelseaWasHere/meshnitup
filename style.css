@@ -224,6 +224,7 @@ button:hover {
   padding: 1.5rem;
   text-align: center;
   position: relative;
+  animation: scaleIn 0.25s ease;
 }
 
 .modal img {
@@ -263,3 +264,54 @@ button:hover {
   cursor: pointer;
 }
 
+/* Wider modal layout */
+.modal-wide {
+  max-width: 720px;
+  width: 95%;
+  padding: 1.75rem;
+}
+
+/* Two-column layout */
+.modal-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+/* Image */
+.modal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Info section */
+.modal-info {
+  text-align: left;
+}
+
+.modal-info h2 {
+  margin-top: 0;
+}
+
+.modal-info p {
+  margin: 0.75rem 0;
+}
+
+/* Mobile stacking */
+@media (max-width: 700px) {
+  .modal-content {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-info {
+    text-align: center;
+  }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
