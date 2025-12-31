@@ -8,13 +8,71 @@
 </head>
 <body>
   <div id="site-header"></div>
-  <main>
-    <h1>Gallery</h1>
-    <p>
-      Photos of our past events and decor creations are coming soon.
-      We can’t wait to share them with you!
-    </p>
-  </main>
+ <main>
+  <h1>Gallery</h1>
+  <p>Click an item to view details and pricing.</p>
+
+  <div class="item-grid">
+    <div class="item-card"
+         data-name="Floral Mesh Wreath"
+         data-description="Handmade decorative wreath perfect for front doors or event backdrops."
+         data-price="$45">
+      <img src="https://via.placeholder.com/300x300?text=Wreath" alt="Floral Mesh Wreath">
+    </div>
+
+    <div class="item-card"
+         data-name="Party Garland Set"
+         data-description="Color-coordinated mesh garlands designed for parties, showers, or birthdays."
+         data-price="$60">
+      <img src="https://via.placeholder.com/300x300?text=Garland" alt="Party Garland Set">
+    </div>
+
+    <div class="item-card"
+         data-name="Custom Table Decor"
+         data-description="Custom-designed mesh table decor to match your event theme."
+         data-price="$35">
+      <img src="https://via.placeholder.com/300x300?text=Table+Decor" alt="Custom Table Decor">
+    </div>
+  </div>
+</main>
+
+<!-- Modal -->
+<div class="modal-overlay" id="itemModal">
+  <div class="modal">
+    <button class="modal-close" aria-label="Close">&times;</button>
+    <img id="modalImage" alt="">
+    <h2 id="modalName"></h2>
+    <p id="modalDescription"></p>
+    <p class="modal-price" id="modalPrice"></p>
+    <a href="contact.html" class="modal-cta">Message if Interested</a>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById("itemModal");
+  const modalImg = document.getElementById("modalImage");
+  const modalName = document.getElementById("modalName");
+  const modalDesc = document.getElementById("modalDescription");
+  const modalPrice = document.getElementById("modalPrice");
+
+  document.querySelectorAll(".item-card").forEach(card => {
+    card.addEventListener("click", () => {
+      modalImg.src = card.querySelector("img").src;
+      modalName.textContent = card.dataset.name;
+      modalDesc.textContent = card.dataset.description;
+      modalPrice.textContent = card.dataset.price;
+      modal.classList.add("open");
+    });
+  });
+
+  document.querySelector(".modal-close").addEventListener("click", () => {
+    modal.classList.remove("open");
+  });
+
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.classList.remove("open");
+  });
+</script>
   
    <script>
     fetch("header.html")
