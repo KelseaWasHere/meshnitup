@@ -268,7 +268,10 @@ button:hover {
 .modal-wide {
   max-width: 720px;
   width: 95%;
+  height: 500px;
   padding: 1.75rem;
+  display: flex;
+  align-items: center;
 }
 
 /* Two-column layout */
@@ -276,21 +279,34 @@ button:hover {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.75rem;
+  width: 100%;
+  height: 100%;
   align-items: center;
 }
 
-/* Image */
-.modal-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
+.modal-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
+
+.modal-image img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
 
 /* Info section */
 .modal-info {
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
 }
+
 
 .modal-info h2 {
   margin-top: 0;
@@ -302,6 +318,10 @@ button:hover {
 
 /* Mobile stacking */
 @media (max-width: 700px) {
+  .modal-wide {
+    height: auto;
+  }
+
   .modal-content {
     grid-template-columns: 1fr;
   }
