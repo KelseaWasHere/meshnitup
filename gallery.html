@@ -7,174 +7,170 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<script>
-  document.querySelectorAll(".item-card").forEach(card => {
-    card.addEventListener("click", () => {
-      // close others
-      document.querySelectorAll(".item-card").forEach(c => {
-        if (c !== card) c.classList.remove("open");
-      });
-
-      // toggle clicked
-      card.classList.toggle("open");
-    });
-  });
-</script>
-
 <body>
   <div id="site-header"></div>
- <main class="gallery-wide">
-  <h1>Gallery</h1>
-  <p>Click an item to view details and pricing.</p>
-  
-  <section class="gallery-filters">
-  <div class="filter-group">
-    <label>Category</label>
-    <select id="categoryFilter">
-      <option value="all">All</option>
-      <option value="wreath">Wreaths</option>
-      <option value="candles">Candles</option>
-      <option value="blankets">Blankets</option>
-      <option value="ornaments">Ornaments</option>
-      <option value="bookmarks">Bookmarks</option>
-    </select>
-  </div>
 
-  <div class="filter-group">
-    <label>Tags</label>
-    <div class="tag-filters">
-      <button data-tag="holiday">Holiday</button>
-      <button data-tag="spring">Spring</button>
-      <button data-tag="winter">Winter</button>
-      <button data-tag="pink">Pink</button>
-      <button data-tag="blue">Blue</button>
-      <button data-tag="red">Red</button>
-      <button data-tag="green">Green</button>
-      <button data-tag="neutral">Neutral</button>
-    </div>
-  </div>
-</section>
+  <main class="gallery-wide">
+    <h1>Gallery</h1>
+    <p>Click an item to view details and pricing.</p>
 
-
-<div class="item-grid">
-</div>
-
-
-</main>
-
-<script src="gallery-data.js"></script>
-
-<script>
-  const grid = document.getElementById("galleryGrid");
-  const categoryFilter = document.getElementById("categoryFilter");
-  const tagButtons = document.querySelectorAll(".tag-filters button");
-
-  let activeTag = null;
-
-  function renderGallery() {
-    grid.innerHTML = "";
-
-    const filteredItems = galleryItems.filter(item => {
-      const categoryMatch =
-        categoryFilter.value === "all" ||
-        item.category === categoryFilter.value;
-
-      const tagMatch =
-        !activeTag || item.tags.includes(activeTag);
-
-      return categoryMatch && tagMatch;
-    });
-
-    filteredItems.forEach(item => {
-      const card = document.createElement("div");
-      card.className = "item-card";
-      card.dataset.name = item.name;
-      card.dataset.description = item.description;
-      card.dataset.price = item.price;
-
-      card.innerHTML = `<img src="${item.image}" alt="${item.name}">`;
-      grid.appendChild(card);
-    });
-  }
-
-  categoryFilter.addEventListener("change", renderGallery);
-
-  tagButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      if (activeTag === btn.dataset.tag) {
-        activeTag = null;
-        btn.classList.remove("active");
-      } else {
-        tagButtons.forEach(b => b.classList.remove("active"));
-        activeTag = btn.dataset.tag;
-        btn.classList.add("active");
-      }
-      renderGallery();
-    });
-  });
-
-  renderGallery();
-</script>
-
-<!-- Modal -->
-<div class="modal-overlay" id="itemModal">
-  <div class="modal modal-wide">
-    <button class="modal-close" aria-label="Close">×</button>
-
-    <div class="modal-content">
-      <div class="modal-image">
-        <img id="modalImage" alt="">
+    <!-- Filters -->
+    <section class="gallery-filters">
+      <div class="filter-group">
+        <label for="categoryFilter">Category</label>
+        <select id="categoryFilter">
+          <option value="all">All</option>
+          <option value="wreath">Wreaths</option>
+          <option value="candles">Candles</option>
+          <option value="blankets">Blankets</option>
+          <option value="ornaments">Ornaments</option>
+          <option value="bookmarks">Bookmarks</option>
+        </select>
       </div>
 
-      <div class="modal-info">
-        <h2 id="modalName"></h2>
-        <p id="modalDescription"></p>
-        <p class="modal-price" id="modalPrice"></p>
+      <div class="filter-group">
+        <label>Tags</label>
+        <div class="tag-filters">
+          <button data-tag="holiday">Holiday</button>
+          <button data-tag="spring">Spring</button>
+          <button data-tag="winter">Winter</button>
+          <button data-tag="pink">Pink</button>
+          <button data-tag="blue">Blue</button>
+          <button data-tag="red">Red</button>
+          <button data-tag="green">Green</button>
+          <button data-tag="neutral">Neutral</button>
+        </div>
+      </div>
+    </section>
 
-        <a id="modalCta" href="contact.html" class="modal-cta">
-          Message if Interested
-        </a>
+    <!-- Gallery Grid -->
+    <div class="item-grid" id="galleryGrid"></div>
+  </main>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="itemModal">
+    <div class="modal modal-wide">
+      <button class="modal-close" aria-label="Close">×</button>
+
+      <div class="modal-content">
+        <div class="modal-image">
+          <img id="modalImage" alt="" />
+        </div>
+
+        <div class="modal-info">
+          <h2 id="modalName"></h2>
+          <p id="modalDescription"></p>
+          <p class="modal-price" id="modalPrice"></p>
+          <a id="modalCta" href="contact.html" class="modal-cta">
+            Message if Interested
+          </a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
+  <!-- Gallery Data -->
+  <script src="gallery-data.js"></script>
 
-<script>
-  const modal = document.getElementById("itemModal");
-  const modalImg = document.getElementById("modalImage");
-  const modalName = document.getElementById("modalName");
-  const modalDesc = document.getElementById("modalDescription");
-  const modalPrice = document.getElementById("modalPrice");
+  <!-- Gallery Logic -->
+  <script>
+    const grid = document.getElementById("galleryGrid");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const tagButtons = document.querySelectorAll(".tag-filters button");
 
-  document.querySelectorAll(".item-card").forEach(card => {
-    card.addEventListener("click", () => {
+    let activeTag = null;
+
+    function renderGallery() {
+      grid.innerHTML = "";
+
+      const filteredItems = galleryItems.filter(item => {
+        const categoryMatch =
+          categoryFilter.value === "all" ||
+          item.category === categoryFilter.value;
+
+        const tagMatch =
+          !activeTag || item.tags.includes(activeTag);
+
+        return categoryMatch && tagMatch;
+      });
+
+      filteredItems.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "item-card";
+        card.dataset.name = item.name;
+        card.dataset.description = item.description;
+        card.dataset.price = item.price;
+
+        card.innerHTML = `
+          <img src="${item.image}" alt="${item.name}">
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    categoryFilter.addEventListener("change", renderGallery);
+
+    tagButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (activeTag === btn.dataset.tag) {
+          activeTag = null;
+          btn.classList.remove("active");
+        } else {
+          tagButtons.forEach(b => b.classList.remove("active"));
+          activeTag = btn.dataset.tag;
+          btn.classList.add("active");
+        }
+        renderGallery();
+      });
+    });
+
+    renderGallery();
+  </script>
+
+  <!-- Modal Logic (Event Delegation) -->
+  <script>
+    const modal = document.getElementById("itemModal");
+    const modalImg = document.getElementById("modalImage");
+    const modalName = document.getElementById("modalName");
+    const modalDesc = document.getElementById("modalDescription");
+    const modalPrice = document.getElementById("modalPrice");
+    const modalCta = document.getElementById("modalCta");
+
+    document.addEventListener("click", e => {
+      const card = e.target.closest(".item-card");
+      if (!card) return;
+
       modalImg.src = card.querySelector("img").src;
       modalName.textContent = card.dataset.name;
       modalDesc.textContent = card.dataset.description;
       modalPrice.textContent = card.dataset.price;
+      modalCta.href = `contact.html?item=${encodeURIComponent(card.dataset.name)}`;
+
       modal.classList.add("open");
     });
-  });
 
-  document.querySelector(".modal-close").addEventListener("click", () => {
-    modal.classList.remove("open");
-  });
+    document.querySelector(".modal-close").addEventListener("click", () => {
+      modal.classList.remove("open");
+    });
 
-  modal.addEventListener("click", e => {
-    if (e.target === modal) modal.classList.remove("open");
-  });
-</script>
-  
-   <script>
+    modal.addEventListener("click", e => {
+      if (e.target === modal) modal.classList.remove("open");
+    });
+  </script>
+
+  <!-- Header Include -->
+  <script>
     fetch("header.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("site-header").innerHTML = html;
 
-        // set active nav link
-        const page = location.pathname.split("/").pop().replace(".html", "") || "index";
-        const activeLink = document.querySelector(`nav a[data-page="${page}"]`);
+        const page =
+          location.pathname.split("/").pop().replace(".html", "") || "index";
+        const activeLink = document.querySelector(
+          `nav a[data-page="${page}"]`
+        );
         if (activeLink) activeLink.classList.add("active");
       });
   </script>
