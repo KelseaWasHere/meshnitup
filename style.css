@@ -116,6 +116,10 @@ input:focus, textarea:focus {
   border-color: var(--coral);
 }
 
+.gallery-wide {
+  max-width: 1200px;
+}
+
 button {
   margin-top: 1rem;
   align-self: flex-start;
@@ -137,7 +141,7 @@ button:hover {
 /* Gallery grid */
 .item-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 2rem;
   margin-top: 2.5rem;
 }
@@ -334,4 +338,25 @@ button:hover {
 @keyframes scaleIn {
   from { transform: scale(0.95); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
+}
+
+/* Large tablets / small laptops */
+@media (max-width: 1100px) {
+  .item-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tablets */
+@media (max-width: 800px) {
+  .item-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 500px) {
+  .item-grid {
+    grid-template-columns: 1fr;
+  }
 }
