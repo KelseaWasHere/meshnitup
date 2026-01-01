@@ -360,3 +360,37 @@ button:hover {
     grid-template-columns: 1fr;
   }
 }
+
+.next-event {
+  margin-top: 4rem;
+}
+
+.next-event h2 {
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+}
+
+.event-card {
+  background: var(--mint);
+  padding: 1.5rem;
+  border-radius: 16px;
+  max-width: 500px;
+}
+
+.event-card h3 {
+  margin-top: 0;
+}
+
+.event-date {
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+
+.event-location {
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.event-note {
+  margin-bottom: 0;
+}
