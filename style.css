@@ -466,3 +466,44 @@ button:hover {
     order: -1;
   }
 }
+
+/* Gallery filters */
+.gallery-filters {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2.5rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.filter-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+select {
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.tag-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag-filters button {
+  background: #eee;
+  border: none;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.tag-filters button.active {
+  background: var(--coral);
+  color: white;
+}
