@@ -2,40 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Mesh ’N It Up</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="site-header"></div>
-  <main>
-    <h1>Decorate. Illuminate. Celebrate.</h1>
-    <p>
-      Mesh ’N It Up creates festive, eye-catching decor for parties, events,
-      and special moments worth celebrating.
-    </p>
-	
-	<section class="next-event">
-  <h2>Where We’ll Be Next</h2>
 
-  <div class="event-card">
-    <h3>Spring Makers Market</h3>
-    <p class="event-date">April 12, 2025 • 10am – 4pm</p>
-    <p class="event-location">Downtown Community Pavilion</p>
-    <p class="event-note">
-      Stop by our booth to see new seasonal decor and custom pieces in person!
-    </p>
-  </div>
-</section>
+  <main class="hero-section">
+    <div class="hero-content">
+      <span class="tagline">Decorate. Illuminate. Celebrate.</span>
+      <h1>Mesh 'N It Up</h1>
+      <p>
+        Beautiful handmade crafts that bring warmth and personality to your
+        space. Each piece tells a story, crafted with care and passion.
+      </p>
+      <div class="buttons">
+        <a href="gallery.html" class="btn btn-primary">Explore Our Work ♡</a>
+        <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+      </div>
+
+      <div class="color-palette">
+        <span class="color coral"></span>
+        <span class="color yellow"></span>
+        <span class="color green"></span>
+        <span class="color blue"></span>
+      </div>
+    </div>
   </main>
-  
-   <script>
+
+  <section class="next-event">
+    <h2>Where We’ll Be Next</h2>
+    <div class="event-card">
+      <h3>Spring Makers Market</h3>
+      <p class="event-date">April 12, 2025 • 10am – 4pm</p>
+      <p class="event-location">Downtown Community Pavilion</p>
+      <p class="event-note">
+        Stop by our booth to see new seasonal decor and custom pieces in person!
+      </p>
+    </div>
+  </section>
+
+  <script>
     fetch("header.html")
       .then(res => res.text())
       .then(html => {
         document.getElementById("site-header").innerHTML = html;
 
-        // set active nav link
+        // Set active nav link
         const page = location.pathname.split("/").pop().replace(".html", "") || "index";
         const activeLink = document.querySelector(`nav a[data-page="${page}"]`);
         if (activeLink) activeLink.classList.add("active");
