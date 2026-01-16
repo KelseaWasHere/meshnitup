@@ -552,6 +552,10 @@ body {
   align-items: center;
   padding: 20px 40px;
   background: transparent;
+
+  width: 100%;        /* Make it full width */
+  position: relative; /* default positioning */
+  box-sizing: border-box; /* include padding in width */
 }
 
 #site-header .brand {
@@ -571,6 +575,7 @@ body {
 #site-header nav a:hover {
   color: #e2877a;
 }
+
 
 /* Hero Section */
 .hero-section {
@@ -691,4 +696,25 @@ body {
 
 .event-card .event-date {
   font-weight: bold;
+}
+
+/* For Chrome, Safari, Edge */
+::-webkit-scrollbar {
+  width: 12px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: white; /* the “bar” background */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: coral; /* the draggable part */
+  border-radius: 6px; /* round edges for the thumb */
+  border: 2px solid white; /* adds spacing around the thumb */
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin; /* auto, thin, none */
+  scrollbar-color: coral white; /* thumb color, track color */
 }
