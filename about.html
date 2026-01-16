@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Us | Mesh ’N It Up</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="site-header"></div>
+  
+<main>
+  <h1>About Us</h1>
+  <p class="services-intro">
+    Mesh ’N It Up is a small, family-run craft business where creativity and care meet. Every item we make is handcrafted with love, and our mission is to bring a personal touch to your home and gifts.
+  </p>
+
+  <!-- Founder Story -->
+  <section class="service-block">
+    <div class="service-image">
+      <img src="https://via.placeholder.com/500x400?text=Tiffany+Canaday" alt="Tiffany Canaday">
+    </div>
+    <div class="service-text">
+      <h2>Tiffany’s Story</h2>
+      <p>
+        Tiffany Canaday, a disabled single mom, started Mesh ’N It Up to channel her creativity into something meaningful. With Parkinson’s, she focuses on projects that are both therapeutic and fulfilling, making each piece with dedication and care.
+      </p>
+    </div>
+  </section>
+
+  <!-- Family & Support -->
+  <section class="service-block reverse">
+    <div class="service-image">
+      <img src="https://via.placeholder.com/500x400?text=Family+Support" alt="Family Support">
+    </div>
+    <div class="service-text">
+      <h2>Our Team</h2>
+      <p>
+        Tiffany is supported by her sister, niece, and daughter. Together, they ensure that every project is handcrafted to perfection, while sharing skills, stories, and joy in every creation.
+      </p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="service-block">
+    <div class="service-image">
+      <img src="https://via.placeholder.com/500x400?text=Mission+and+Vision" alt="Our Mission">
+    </div>
+    <div class="service-text">
+      <h2>Our Mission</h2>
+      <p>
+        We aim to create beautiful, personalized home decor and gifts while fostering creativity and independence. Every wreath, candle, or blanket is a unique expression of care and craftsmanship.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="services-cta">
+    <h2>Want to Connect?</h2>
+    <p>
+      Reach out to learn more about us or to request a custom creation. We love turning ideas into tangible, handcrafted pieces.
+    </p>
+    <a href="contact.html" class="cta-button">Contact Us</a>
+  </section>
+</main>
+  
+<script>
+  fetch("header.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("site-header").innerHTML = html;
+
+      // set active nav link
+      const page = location.pathname.split("/").pop().replace(".html", "") || "index";
+      const activeLink = document.querySelector(`nav a[data-page="${page}"]`);
+      if (activeLink) activeLink.classList.add("active");
+    });
+</script>
+</body>
+</html>
